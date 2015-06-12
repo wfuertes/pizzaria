@@ -34,18 +34,20 @@ public class PizzaMemoriaDAO implements PizzaDAO {
     }
 
     @Override
-    public void save(Pizza pizza) {
+    public Pizza save(Pizza pizza) {
 
         if (pizza.getId() == null) {
             pizza.setId((long) pizzas.size() + 1);
         }
         pizzas.put(pizza.getId(), pizza);
+
+        return pizza;
     }
 
     @Override
-    public void update(Pizza pizza) {
+    public Pizza update(Pizza pizza) {
 
-        this.save(pizza);
+        return save(pizza);
     }
 
     @Override

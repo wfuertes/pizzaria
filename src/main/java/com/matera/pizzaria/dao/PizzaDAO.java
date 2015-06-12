@@ -11,9 +11,9 @@ import java.util.List;
  */
 public interface PizzaDAO {
 
-    void save(Pizza pizza);
+    Pizza save(Pizza pizza);
 
-    void update(Pizza pizza);
+    Pizza update(Pizza pizza);
 
     void delete(Long id);
 
