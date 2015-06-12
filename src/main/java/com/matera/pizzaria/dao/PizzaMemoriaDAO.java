@@ -2,6 +2,7 @@ package com.matera.pizzaria.dao;
 
 import com.matera.pizzaria.model.Pizza;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +19,19 @@ import org.springframework.stereotype.Repository;
 public class PizzaMemoriaDAO implements PizzaDAO {
 
     private static final Map<Long, Pizza> pizzas = new HashMap<>();
+    static {
+        Pizza pizza = new Pizza();
+        pizza.setId((long) (pizzas.size() + 1));
+        pizza.setName("Luzitana II");
+        pizza.setPrice(new BigDecimal("39.80"));
+        pizzas.put(pizza.getId(), pizza);
+
+        Pizza pizza2 = new Pizza();
+        pizza2.setId((long) (pizzas.size() + 1));
+        pizza2.setName("Paulista");
+        pizza2.setPrice(new BigDecimal("29.50"));
+        pizzas.put(pizza2.getId(), pizza2);
+    }
 
     @Override
     public void save(Pizza pizza) {
