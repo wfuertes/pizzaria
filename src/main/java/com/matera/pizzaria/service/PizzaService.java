@@ -1,7 +1,7 @@
 package com.matera.pizzaria.service;
 
-import com.matera.pizzaria.dao.PizzaDAO;
 import com.matera.pizzaria.model.Pizza;
+import com.matera.pizzaria.repository.PizzaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +14,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class PizzaService {
 
-    private final PizzaDAO pizzariaDAO;
+    private final PizzaRepository pizzaRepository;
 
     @Autowired
-    public PizzaService(final PizzaDAO pizzariaDAO) {
+    public PizzaService(final PizzaRepository pizzaRepository) {
 
-        this.pizzariaDAO = pizzariaDAO;
+        this.pizzaRepository = pizzaRepository;
     }
 
     public String addNewPizza(Pizza pizza) {
 
-        pizzariaDAO.save(pizza);
+        pizzaRepository.save(pizza);
         return "Pizza adicionada com sucesso!";
     }
 }

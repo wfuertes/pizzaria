@@ -36,5 +36,6 @@
 
 	<import resource="session-factory.xml" />
 	<import resource="entity-manager.xml" />
+	<import resource="spring-data-jpa.xml" />
 
 </beans>  

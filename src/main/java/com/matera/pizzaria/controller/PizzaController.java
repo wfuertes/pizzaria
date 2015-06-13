@@ -1,7 +1,7 @@
 package com.matera.pizzaria.controller;
 
-import com.matera.pizzaria.dao.PizzaDAO;
 import com.matera.pizzaria.model.Pizza;
+import com.matera.pizzaria.repository.PizzaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,33 +19,33 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("pizza")
 public class PizzaController {
 
-    private final PizzaDAO pizzaDAO;
+    private final PizzaRepository pizzaRepository;
 
     @Autowired
-    public PizzaController(final PizzaDAO pizzaDAO) {
+    public PizzaController(final PizzaRepository pizzaRepository) {
 
-        this.pizzaDAO = pizzaDAO;
+        this.pizzaRepository = pizzaRepository;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView toPizzas(ModelAndView view) {
 
         view.setViewName("pizza/home");
-        view.getModel().put("pizzas", pizzaDAO.findAll());
+        view.getModel().put("pizzas", pizzaRepository.findAll());
         return view;
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String addPizza(Pizza pizza) {
 
-        pizzaDAO.save(pizza);
+        pizzaRepository.save(pizza);
         return "redirect:/pizza";
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     public String updatePizza(Pizza pizza) {
 
-        pizzaDAO.update(pizza);
+        pizzaRepository.save(pizza);
         return "redirect:/pizza";
     }
 
@@ -53,15 +53,15 @@ public class PizzaController {
     public ModelAndView getPizza(@PathVariable("id") Long id, ModelAndView view) {
 
         view.setViewName("pizza/home");
-        view.getModel().put("pizza", pizzaDAO.findOne(id));
-        view.getModel().put("pizzas", pizzaDAO.findAll());
+        view.getModel().put("pizza", pizzaRepository.findOne(id));
+        view.getModel().put("pizzas", pizzaRepository.findAll());
         return view;
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public String deletePizza(@PathVariable("id") Long id) {
 
-        pizzaDAO.delete(id);
+        pizzaRepository.delete(id);
         return "redirect:/pizza";
     }
 }
