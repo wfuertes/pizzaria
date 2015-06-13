@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html data-ng-app="pizzariaApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/pizzaria.css" type="text/css">
+<title>Pizzaria Spring</title>
+</head>
+<body>
+	<div id="all" class="jumbotron">
+		<div id="menu">
+			<ul>
+				<li><a href="/pizzaria/pages/index.html#/">HOME</a></li>
+				<li><a href="/pizzaria/pages/index.html#/pizzas">PIZZAS</a></li>
+                <li><a href="/pizzaria/pages/index.html#/users">USUÁRIOS</a></li>
+                <li><a href="/pizzaria/pages/index.html#/login">LOGIN</a></li>
+				<li><a href="/pizzaria/pages/index.html#/logout">LOGOUT</a></li>
+			</ul>
+		</div>
+		<div id="header">
+			<h1>Spring Pizzas</h1>
+		</div>
+		<div id="content">
+			<!-- angular templating -->
+			<!-- this is where content will be injected -->
+			<div class="holder" data-ng-view></div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="assets/libs/angular/angular.min.js"></script>
+	<script type="text/javascript" src="assets/libs/angular/angular-route.min.js"></script>
+	<script type="text/javascript" src="app/app.modules.js"></script>
+	<script type="text/javascript" src="app/app.routes.js"></script>
+	<script type="text/javascript" src="app/components/home/homeController.js"></script>
+	<script type="text/javascript" src="app/components/home/homeService.js"></script>
+	<script type="text/javascript" src="app/components/pizza/pizzaController.js"></script>
+	<script type="text/javascript" src="app/components/user/userController.js"></script>
+</body>
+</html>

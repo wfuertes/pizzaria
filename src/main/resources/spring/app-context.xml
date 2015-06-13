@@ -26,7 +26,7 @@
 	</mvc:annotation-driven>
 
 	<mvc:resources mapping="/pages/**" location="/WEB-INF/pages/" />
-
+	
 	<!-- Define a localização das views e o tipo de extensão -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
