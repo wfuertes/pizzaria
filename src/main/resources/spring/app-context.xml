@@ -34,7 +34,6 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<import resource="session-factory.xml" />
-	<import resource="entity-manager.xml" />
+	<!-- importe aqui o entity-manager e session-factory -->
 
 </beans>  
