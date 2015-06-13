@@ -143,7 +143,7 @@
 					<settingsKey>sensibleKey</settingsKey>
 					<autocommit>true</autocommit>
 					<srcFiles>
-						<srcFile>${basedir}/src/main/resources/sql/create-table-user-roles.sql</srcFile>
+						<srcFile>${basedir}/src/main/resources/sql/create-database-with-data.sql</srcFile>
 					</srcFiles>
 				</configuration>
 				<dependencies>
@@ -156,4 +156,13 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>local</id>
+			<build>
+				<defaultGoal>hsqldb:start sql:execute tomcat7:run</defaultGoal>
+			</build>
+		</profile>
+	</profiles>
 </project>

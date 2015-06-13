@@ -8,7 +8,15 @@
 <title>Treinamento Spring Framework Welcome</title>
 </head>
 <body>
-	<h3> Treinamento de Spring Framework </h3>
-	<a href="/pizzaria/pizza">Gerenciar Pizzas</a>
+	<h2>
+		Treinamento de Spring Framework
+		</h3>
+		<h4>
+			<a href="/pizzaria/pizza">Gerenciar Pizzas</a>
+		</h4>
+
+		<h4>
+			<a href="/pizzaria/pages/index.html">Aplicação AngularJS</a>
+		</h4>
 </body>
 </html>

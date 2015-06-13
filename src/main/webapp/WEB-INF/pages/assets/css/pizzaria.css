@@ -1,0 +1,67 @@
+@CHARSET "UTF-8";
+
+body {
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	font-family: "Myriad Set Pro", "Lucida Grande", Helvetica, Arial,
+		Verdana, sans-serif;
+}
+
+div#all {
+	margin: auto;
+	width: 1024px;
+	text-align: left;
+}
+
+div#menu {
+	font-weight: bolder;
+	text-align: right;
+	height: 30px;
+	line-height: 30px;
+}
+
+div#header {
+	text-align: center;
+}
+
+div#content {
+	min-height: 400px;
+}
+
+div#menu ul {
+	padding: 0px;
+	margin: 0px;
+	margin-right: 20px;
+	list-style: none;
+}
+
+div#menu ul li {
+	display: inline-block;
+	padding-left: 10px;
+}
+
+div#menu ul li a {
+	text-decoration: none;
+}
+
+div#menu ul li a:hover {
+	border: solid 2px #08c;
+	border-width: 0px 0px 2px 0px;
+}
+
+div#menu ul li a:VISITED {
+	color: #08c;
+}
+
+div#menu ul li a:LINK {
+	color: #08c;
+}
+
+.jumbotron {
+	padding-top: 10px;
+}
+
+div#content {
+	padding: 30px 50px 50px 50px;
+}
