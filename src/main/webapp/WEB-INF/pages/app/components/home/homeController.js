@@ -2,13 +2,13 @@
 (function() {
 	'use strict';
 
-	var homeCtrl = function($scope, homeService) {
-		homeService.fetchPizzas(function(data) {
-			console.log(data);
+	// Controller HomeCtrl que depende de "pizzaService"
+	var homeCtrl = function($scope, pizzaService) {
+		pizzaService.findAll(function(data) {
 			$scope.pizzas = data;
 		});
 	};
 
-	/* Controllers */
+	/* Registrando o novo controller HomeCtrl */
 	angular.module('pizzariaApp.controllers').controller('HomeCtrl', homeCtrl);
 })();

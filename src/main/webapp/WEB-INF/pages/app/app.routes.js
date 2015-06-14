@@ -4,13 +4,13 @@
 
 	var routes = function($routeProvider) {
 		$routeProvider.when('/', {
-			controller : 'HomeCtrl',
+			//controller : 'HomeCtrl',
 			templateUrl : '/pizzaria/pages/app/components/home/homeView.html'
 		}).when('/pizzas', {
-			controller : 'PizzaCtrl',
+			//controller : 'PizzaCtrl',
 			templateUrl : '/pizzaria/pages/app/components/pizza/pizzaView.html'
 		}).when('/users', {
-			controller : 'UserCtrl',
+			//controller : 'UserCtrl',
 			templateUrl : '/pizzaria/pages/app/components/user/userView.html'
 		});
 	};

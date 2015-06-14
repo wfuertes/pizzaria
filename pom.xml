@@ -112,6 +112,7 @@
 				<configuration>
 					<path>/pizzaria</path>
 					<port>8080</port>
+					<charset>UTF-8</charset>
 				</configuration>
 			</plugin>
 			<plugin>
