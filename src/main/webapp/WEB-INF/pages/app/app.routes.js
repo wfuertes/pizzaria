@@ -12,6 +12,9 @@
 		}).when('/users', {
 			//controller : 'UserCtrl',
 			templateUrl : '/pizzaria/pages/app/components/user/userView.html'
+		}).when('/login', {
+			//controller : 'LoginCtrl',
+			templateUrl : '/pizzaria/pages/app/components/login/loginView.html'
 		});
 	};
 
