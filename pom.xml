@@ -128,6 +128,12 @@
 					<path>/pizzaria</path>
 					<port>8080</port>
 					<charset>UTF-8</charset>
+					<connectorHttpProtocol>
+						<proxyName>localhost:8080</proxyName>
+						<proxyPort>80</proxyPort>
+						<className>org.apache.coyote.tomcat4.CoyoteConnector</className>
+                        <URIEncoding>UTF-8</URIEncoding>
+					</connectorHttpProtocol>
 				</configuration>
 			</plugin>
 			<plugin>

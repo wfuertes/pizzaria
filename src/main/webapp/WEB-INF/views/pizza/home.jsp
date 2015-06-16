@@ -19,6 +19,9 @@
 <body>
 	<h3>Exemplo de View JSP + Controller Spring MVC.</h3>
 	<a href="/pizzaria">Home</a>
+	<form action="/pizzaria/logout" method="post">
+		<input type="submit" value="Logout">
+	</form>
 
 	<form action="/pizzaria/pizza" method="post">
 		<input type="hidden" name="_method"
