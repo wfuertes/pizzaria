@@ -47,7 +47,6 @@ public class PizzariaAuthenticationSuccessHandler implements AuthenticationSucce
         cookie.setDomain("pizzaria.aqui.net");
         response.addCookie(cookie);
         response.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-        response.setHeader(HttpHeaders.LOCATION, "http://pizzaria.aqui.net/#/");
         response.getWriter().write(mapper.writeValueAsString(info));
     }
 }
