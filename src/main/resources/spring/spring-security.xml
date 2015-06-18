@@ -20,12 +20,9 @@
 	<!-- URLs com configurações do Spring Secutiry -->
 	<sec:http auto-config="true" use-expressions="true">
 		<sec:intercept-url pattern="/**" access="isAuthenticated()" />
-
 		<sec:csrf disabled="true" />
-
 		<sec:form-login login-processing-url="/login"
 			default-target-url="/?login_success=1" />
-
 		<sec:logout logout-url="/logout" logout-success-url="/?logout_success=1"
 			delete-cookies="JSESSIONID" />
 	</sec:http>
