@@ -7,16 +7,17 @@
     http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
+	<!-- Configuração do AuthenticationProvider -->
 	<sec:authentication-manager>
 		<sec:authentication-provider
 			user-service-ref="pizzariaUserDetailsService" />
 	</sec:authentication-manager>
 
-	<!-- URLs without Spring Security -->
+	<!-- URLs livres do Spring Security -->
 	<sec:http pattern="/" security="none" />
 	<sec:http pattern="/resources/**" security="none" />
 
-	<!-- Spring Security config intercept -->
+	<!-- URLs com configurações do Spring Secutiry -->
 	<sec:http auto-config="true" use-expressions="true">
 		<sec:intercept-url pattern="/**" access="isAuthenticated()" />
 
@@ -29,7 +30,6 @@
 			delete-cookies="JSESSIONID" />
 	</sec:http>
 
-	<!-- To use the Spring Security Annotations in Classes -->
-	<sec:global-method-security
-		pre-post-annotations="enabled" />
+	<!-- Ativa o suporte as anotações do Spring Security -->
+	<sec:global-method-security	pre-post-annotations="enabled" />
 </beans>
