@@ -30,7 +30,8 @@ public class PizzaController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView toPizzas(ModelAndView view) {
 
-        view.setViewName("pizza/home");
+        view.setViewName("index");
+        view.getModel().put("pagePath", "pizzas.jsp");
         view.getModel().put("pizzas", pizzaRepository.findAll());
         return view;
     }
@@ -52,7 +53,8 @@ public class PizzaController {
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public ModelAndView getPizza(@PathVariable("id") Long id, ModelAndView view) {
 
-        view.setViewName("pizza/home");
+        view.setViewName("index");
+        view.getModel().put("pagePath", "pizzas.jsp");
         view.getModel().put("pizza", pizzaRepository.findOne(id));
         view.getModel().put("pizzas", pizzaRepository.findAll());
         return view;

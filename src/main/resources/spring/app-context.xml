@@ -25,7 +25,7 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
-	<mvc:resources mapping="/pages/**" location="/WEB-INF/pages/" />
+	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 
 	<!-- Define a localização das views e o tipo de extensão -->
 	<bean

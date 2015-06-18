@@ -14,25 +14,19 @@
 
 	<!-- URLs without Spring Security -->
 	<sec:http pattern="/" security="none" />
-	<sec:http pattern="/api/**" security="none" />
+	<sec:http pattern="/resources/**" security="none" />
 
 	<!-- Spring Security config intercept -->
 	<sec:http auto-config="true" use-expressions="true">
 		<sec:intercept-url pattern="/**" access="isAuthenticated()" />
-        
-        <sec:csrf disabled="true" />
-        
-		<sec:form-login login-processing-url="/login"
-	default-target-url="http://localhost?login_success=1"
-	authentication-success-handler-ref="pizzariaAuthenticationSuccessHandler" />
-	
-		<sec:logout logout-url="/logout" logout-success-url="/?logout_success=1" delete-cookies="JSESSIONID" />
-		
-		<!-- <sec:form-login login-page="/pages/index.html#/login" login-processing-url="/authenticate" 
-			default-target-url="/pages/index.html#/" authentication-failure-url="/pages/index.html#/login?login_error=1" 
-			/> <sec:logout invalidate-session="true" logout-url="/logout" logout-success-url="/pizza/?logout_success=1" 
-			/> -->
 
+		<sec:csrf disabled="true" />
+
+		<sec:form-login login-processing-url="/login"
+			default-target-url="/?login_success=1" />
+
+		<sec:logout logout-url="/logout" logout-success-url="/?logout_success=1"
+			delete-cookies="JSESSIONID" />
 	</sec:http>
 
 	<!-- To use the Spring Security Annotations in Classes -->
