@@ -16,13 +16,13 @@
 	</sec:authentication-manager>
 	
 	<bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
-<!-- 		<constructor-arg value="x9ajDR$#Qkr91" /> -->
-<!-- 	</bean> -->
+	
+	<bean id="logoutSuccessHandler" class="com.matera.pizzaria.filter.LogoutSucessHandler" />
 	
 	<!-- URLs livres do Spring Security -->
 	<sec:http pattern="/" security="none" />
 	<sec:http pattern="/resources/**" security="none" />
-	<sec:http pattern="/xyz/authenticate" security="none" />
+	<sec:http pattern="/xyz/login" security="none" />
 	
 	<sec:http
 			realm="Protected API"
@@ -33,8 +33,10 @@
 			authentication-manager-ref="authenticationManager">
 		<sec:csrf disabled="true" />
 		<sec:custom-filter ref="authenticationTokenProcessingFilter" position="FORM_LOGIN_FILTER" />
-		<sec:intercept-url pattern="/xyz/authenticate" access="permitAll" />
-<!-- 		<sec:intercept-url pattern="/**" access="isAuthenticated()" /> -->
+		<sec:intercept-url method="POST" pattern="/xyz/login" access="permitAll" />
+		<sec:intercept-url method="GET" pattern="/xyz/login" access="isAuthenticated()" />
+ 		<sec:intercept-url pattern="/**" access="isAuthenticated()" />
+ 		<sec:logout logout-url="/xyz/logout" success-handler-ref="logoutSuccessHandler"/>
 <!-- 		<sec:intercept-url method="GET" pattern="/rest/news/**" access="hasRole('user')" /> -->
 <!-- 		<sec:intercept-url method="PUT" pattern="/rest/news/**" access="hasRole('admin')" /> -->
 <!-- 		<sec:intercept-url method="POST" pattern="/rest/news/**" access="hasRole('admin')" /> -->

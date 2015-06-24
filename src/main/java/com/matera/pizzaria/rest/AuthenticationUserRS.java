@@ -15,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +46,7 @@ public class AuthenticationUserRS {
 	 */
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
-	public ResponseEntity<UserTransfer> getUser()
+	public ResponseEntity<UserDetails> getUser()
 	{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Object principal = authentication.getPrincipal();
@@ -54,7 +55,8 @@ public class AuthenticationUserRS {
 		}
 		UserDetails userDetails = (UserDetails) principal;
 
-		return ResponseEntity.ok(new UserTransfer(userDetails.getUsername(), this.createRoleMap(userDetails)));
+		//return ResponseEntity.ok(new UserTransfer(userDetails.getUsername(), this.createRoleMap(userDetails)));
+		return ResponseEntity.ok(this.userService.loadUserByUsername(userDetails.getUsername()));
 	}
 
 	/**
@@ -67,7 +69,7 @@ public class AuthenticationUserRS {
 	 * @return A transfer containing the authentication token.
 	 */
 	@ResponseBody
-	@RequestMapping(value = "authenticate", 
+	@RequestMapping(value = "/login", 
 			method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE)
 	public TokenTransfer authenticate(
 			/*@RequestParam("username") String username,
@@ -92,14 +94,23 @@ public class AuthenticationUserRS {
 		return new TokenTransfer(TokenUtils.createToken(userDetails));
 	}
 	
-	private Map<String, Boolean> createRoleMap(UserDetails userDetails)
-	{
-		Map<String, Boolean> roles = new HashMap<String, Boolean>();
-		for (GrantedAuthority authority : userDetails.getAuthorities()) {
-			roles.put(authority.getAuthority(), Boolean.TRUE);
-		}
-
-		return roles;
-	}
+//	@RequestMapping(value = "logout", method = RequestMethod.GET)
+//	public ResponseEntity<String> logout() {
+//		System.out.println(" *** MainRestController.logout");
+//		
+//		return ResponseEntity.ok("Logout invalidates token on server-side. "
+//				+ "It must come as a POST request with valid X-Auth-Token, "
+//				+ "URL is configured for MyAuthenticationFilter.");
+//	}
+	
+//	private Map<String, Boolean> createRoleMap(UserDetails userDetails)
+//	{
+//		Map<String, Boolean> roles = new HashMap<String, Boolean>();
+//		for (GrantedAuthority authority : userDetails.getAuthorities()) {
+//			roles.put(authority.getAuthority(), Boolean.TRUE);
+//		}
+//
+//		return roles;
+//	}
 
 }
