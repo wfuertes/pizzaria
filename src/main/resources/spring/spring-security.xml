@@ -15,9 +15,9 @@
 			</sec:authentication-provider>
 	</sec:authentication-manager>
 	
-	<bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder">
-		<constructor-arg value="ThisIsASecretSoChangeMe" />
-	</bean>
+	<bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+<!-- 		<constructor-arg value="x9ajDR$#Qkr91" /> -->
+<!-- 	</bean> -->
 	
 	<!-- URLs livres do Spring Security -->
 	<sec:http pattern="/" security="none" />

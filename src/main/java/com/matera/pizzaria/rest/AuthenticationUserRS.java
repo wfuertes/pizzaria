@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,14 +16,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.matera.pizzaria.exceptions.HttpUnauthorizedException;
 import com.matera.pizzaria.model.TokenTransfer;
 import com.matera.pizzaria.model.UserLogin;
+import com.matera.pizzaria.model.UserTransfer;
 import com.matera.pizzaria.support.TokenUtils;
 
 @Controller
@@ -41,18 +43,19 @@ public class AuthenticationUserRS {
 	 * 
 	 * @return A transfer containing the username and the roles.
 	 */
-//	@RequestMapping(value = "authenticate", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
-//	public UserTransfer getUser()
-//	{
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		Object principal = authentication.getPrincipal();
-//		if (principal instanceof String && ((String) principal).equals("anonymousUser")) {
-//			throw new HttpUnauthorizedException();
-//		}
-//		UserDetails userDetails = (UserDetails) principal;
-//
-//		return new UserTransfer(userDetails.getUsername(), this.createRoleMap(userDetails));
-//	}
+	@ResponseBody
+	@RequestMapping(method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
+	public ResponseEntity<UserTransfer> getUser()
+	{
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Object principal = authentication.getPrincipal();
+		if (principal instanceof String && ((String) principal).equals("anonymousUser")) {
+			throw new HttpUnauthorizedException();
+		}
+		UserDetails userDetails = (UserDetails) principal;
+
+		return ResponseEntity.ok(new UserTransfer(userDetails.getUsername(), this.createRoleMap(userDetails)));
+	}
 
 	/**
 	 * Authenticates a user and creates an authentication token.
@@ -63,6 +66,7 @@ public class AuthenticationUserRS {
 	 *            The password of the user.
 	 * @return A transfer containing the authentication token.
 	 */
+	@ResponseBody
 	@RequestMapping(value = "authenticate", 
 			method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE)
 	public TokenTransfer authenticate(
