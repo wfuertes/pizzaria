@@ -17,7 +17,7 @@
 	
 	<bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
 	
-	<bean id="logoutSuccessHandler" class="com.matera.pizzaria.filter.LogoutSucessHandler" />
+<!-- 	<bean id="logoutSuccessHandler" class="com.matera.pizzaria.filter.LogoutSucessHandler" /> -->
 	
 	<!-- URLs livres do Spring Security -->
 	<sec:http pattern="/" security="none" />
@@ -35,7 +35,7 @@
 		<sec:custom-filter ref="authenticationTokenProcessingFilter" position="FORM_LOGIN_FILTER" />
 		<sec:intercept-url method="POST" pattern="/auth/login" access="permitAll" />
  		<sec:intercept-url pattern="/**" access="isAuthenticated()" />
- 		<sec:logout logout-url="/auth/logout" success-handler-ref="logoutSuccessHandler"/>
+<!--  		<sec:logout logout-url="/auth/logout" success-handler-ref="logoutSuccessHandler"/> -->
 <!-- 		<sec:intercept-url method="GET" pattern="/rest/news/**" access="hasRole('user')" /> -->
 <!-- 		<sec:intercept-url method="PUT" pattern="/rest/news/**" access="hasRole('admin')" /> -->
 <!-- 		<sec:intercept-url method="POST" pattern="/rest/news/**" access="hasRole('admin')" /> -->
