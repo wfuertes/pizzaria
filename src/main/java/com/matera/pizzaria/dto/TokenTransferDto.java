@@ -1,10 +1,10 @@
 package com.matera.pizzaria.dto;
 
-public class TokenTransfer {
+public class TokenTransferDto {
 
 	private final String token;
 
-	public TokenTransfer(String token) {
+	public TokenTransferDto(String token) {
 		this.token = token;
 	}
 

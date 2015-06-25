@@ -1,6 +1,6 @@
 package com.matera.pizzaria.dto;
 
-public class UserLogin {
+public class UserLoginDto {
 
 	private String username;
 	private String password;

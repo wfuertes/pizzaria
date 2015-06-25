@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.matera.pizzaria.dto.TokenTransfer;
-import com.matera.pizzaria.dto.UserLogin;
+import com.matera.pizzaria.dto.TokenTransferDto;
+import com.matera.pizzaria.dto.UserLoginDto;
 import com.matera.pizzaria.exception.HttpUnauthorizedException;
 import com.matera.pizzaria.support.TokenUtils;
 
@@ -63,7 +63,7 @@ public class AuthenticationUserRS {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE)
-	public TokenTransfer authenticate(@RequestBody UserLogin userLogin) {
+	public TokenTransferDto authenticate(@RequestBody UserLoginDto userLogin) {
 
 		System.out.println(userLogin.getUsername());
 
@@ -80,7 +80,7 @@ public class AuthenticationUserRS {
 		UserDetails userDetails = this.userService.loadUserByUsername(userLogin
 				.getUsername());
 
-		return new TokenTransfer(TokenUtils.createToken(userDetails));
+		return new TokenTransferDto(TokenUtils.createToken(userDetails));
 	}
 
 }
