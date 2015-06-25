@@ -37,8 +37,8 @@ insert into authority values ('USER', 'Acesso ao cadastro de pizzas');
 insert into authority values ('ADMIN', 'Acesso ao cadastro de usuários');
 
 -- inserindo usuarios
-insert into user (username, password, firstname, lastname) values ('willian', '4efe081594ce25ee4efd9f7067f7f678a347bccf2de201f3adf2a3eb544850b465b4e51cdc3fcdde', 'Willian', 'Fuertes Batista');
-insert into user (username, password, firstname, lastname) values ('flavia', '4efe081594ce25ee4efd9f7067f7f678a347bccf2de201f3adf2a3eb544850b465b4e51cdc3fcdde', 'Flavia', 'Pondian');
+insert into user (username, password, firstname, lastname) values ('willian', '6d3b81630883bc54a92cfea42b1cea1a54e7fce7569a9ebdb94db3953e08705ca45db1a3f49afedb', 'Willian', 'Fuertes Batista');
+insert into user (username, password, firstname, lastname) values ('flavia', '14db4689bd390ba22368cce3f4d3559d23206a9bcf73914fe2ab1724c1e64d96b81130d3c433fe08', 'Flavia', 'Pondian');
 
 -- inserindo papeis ao usuarios
 insert into user_authority values ((select id from user where username = 'willian'), 'USER');

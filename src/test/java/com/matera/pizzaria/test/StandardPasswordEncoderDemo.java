@@ -9,9 +9,9 @@ public class StandardPasswordEncoderDemo {
     @Test
     public void testCannotReproduceHashFromConfigFile() {
         StandardPasswordEncoder encoder = new StandardPasswordEncoder();
-        String password = "koala";
+        String password = "flavia";
         String encoded = encoder.encode(password);
-        String encodedFromXML = "4efe081594ce25ee4efd9f7067f7f678a347bccf2de201f3adf2a3eb544850b465b4e51cdc3fcdde";
+        String encodedFromXML = "6d3b81630883bc54a92cfea42b1cea1a54e7fce7569a9ebdb94db3953e08705ca45db1a3f49afedb";
 
         // What we generated is not what's in the XML
         assertTrue(encodedFromXML != encoded);
@@ -26,7 +26,7 @@ public class StandardPasswordEncoderDemo {
     @Test
     public void testAnotherRunWillAlsoYieldDifferentHashes() {
         StandardPasswordEncoder encoder = new StandardPasswordEncoder();
-        String password = "koala";
+        String password = "willian";
         String encoded = encoder.encode(password);
         String encoded2 = encoder.encode(password);
         assertTrue(encoded2 != encoded);
