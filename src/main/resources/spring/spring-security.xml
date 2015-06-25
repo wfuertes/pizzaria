@@ -17,12 +17,9 @@
 	
 	<bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
 	
-<!-- 	<bean id="logoutSuccessHandler" class="com.matera.pizzaria.filter.LogoutSucessHandler" /> -->
-	
 	<!-- URLs livres do Spring Security -->
 	<sec:http pattern="/" security="none" />
 	<sec:http pattern="/resources/**" security="none" />
-	<sec:http pattern="/auth/login" security="none" />
 	
 	<sec:http
 			realm="Protected API"
@@ -35,11 +32,6 @@
 		<sec:custom-filter ref="authenticationTokenProcessingFilter" position="FORM_LOGIN_FILTER" />
 		<sec:intercept-url method="POST" pattern="/auth/login" access="permitAll" />
  		<sec:intercept-url pattern="/**" access="isAuthenticated()" />
-<!--  		<sec:logout logout-url="/auth/logout" success-handler-ref="logoutSuccessHandler"/> -->
-<!-- 		<sec:intercept-url method="GET" pattern="/rest/news/**" access="hasRole('user')" /> -->
-<!-- 		<sec:intercept-url method="PUT" pattern="/rest/news/**" access="hasRole('admin')" /> -->
-<!-- 		<sec:intercept-url method="POST" pattern="/rest/news/**" access="hasRole('admin')" /> -->
-<!-- 		<sec:intercept-url method="DELETE" pattern="/rest/news/**" access="hasRole('admin')" /> -->
 	</sec:http>
 	
 	<bean id="unauthorizedEntryPoint" class="com.matera.pizzaria.rest.UnauthorizedEntryPoint" />
@@ -48,34 +40,4 @@
 		<constructor-arg ref="pizzariaUserDetailsService" />
 	</bean>
 	
-		
-<!-- 	<sec:authentication-manager id="authenticationManager"> -->
-<!-- 		<sec:authentication-provider user-service-ref="userDao"> -->
-<!-- 			<sec:password-encoder ref="passwordEncoder"></sec:password-encoder> -->
-<!-- 		</sec:authentication-provider> -->
-<!-- 	</sec:authentication-manager> -->
-	
-
-	<!-- URLs livres do Spring Security -->
-<!-- 	<sec:http pattern="/" security="none" /> -->
-<!-- 	<sec:http pattern="/resources/**" security="none" /> -->
-
-	<!-- URLs com configurações do Spring Secutiry -->
-<!-- 	<sec:http auto-config="true" use-expressions="true"> -->
-	
-<!-- 		<sec:intercept-url pattern="/**" access="isAuthenticated()" /> -->
-		
-<!-- 		<sec:csrf disabled="true" /> -->
-		
-<!-- 		<sec:form-login login-processing-url="/login" -->
-<!-- 			default-target-url="/?login_success=1" /> -->
-			
-<!-- 		<sec:logout logout-url="/logout" logout-success-url="/?logout_success=1" -->
-<!-- 			delete-cookies="JSESSIONID" /> -->
-<!-- 	</sec:http> -->
-
-	<!-- Ativa o suporte as anotações do Spring Security -->
-<!-- 	<sec:global-method-security	pre-post-annotations="enabled" /> -->
-	
-
 </beans>
