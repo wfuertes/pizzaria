@@ -1,4 +1,4 @@
-package com.matera.pizzaria.rest;
+package com.matera.pizzaria.exception;
 
 import java.io.IOException;
 

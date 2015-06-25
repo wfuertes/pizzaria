@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.matera.pizzaria.exceptions.HttpUnauthorizedException;
+import com.matera.pizzaria.exception.HttpUnauthorizedException;
 import com.matera.pizzaria.model.TokenTransfer;
 import com.matera.pizzaria.model.UserLogin;
 import com.matera.pizzaria.support.TokenUtils;
