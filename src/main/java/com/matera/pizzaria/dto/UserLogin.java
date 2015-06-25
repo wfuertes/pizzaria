@@ -1,4 +1,4 @@
-package com.matera.pizzaria.model;
+package com.matera.pizzaria.dto;
 
 public class UserLogin {
 
