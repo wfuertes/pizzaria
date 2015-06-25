@@ -34,9 +34,9 @@
  		<sec:intercept-url pattern="/**" access="isAuthenticated()" />
 	</sec:http>
 	
-	<bean id="unauthorizedEntryPoint" class="com.matera.pizzaria.rest.UnauthorizedEntryPoint" />
+	<bean id="unauthorizedEntryPoint" class="com.matera.pizzaria.exception.UnauthorizedEntryPoint" />
 	
-	<bean class="com.matera.pizzaria.rest.AuthenticationTokenProcessingFilter" id="authenticationTokenProcessingFilter">
+	<bean class="com.matera.pizzaria.filter.AuthenticationTokenProcessingFilter" id="authenticationTokenProcessingFilter">
 		<constructor-arg ref="pizzariaUserDetailsService" />
 	</bean>
 	
