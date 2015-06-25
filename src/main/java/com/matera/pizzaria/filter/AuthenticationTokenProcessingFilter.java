@@ -17,23 +17,19 @@ import org.springframework.web.filter.GenericFilterBean;
 
 import com.matera.pizzaria.support.TokenUtils;
 
-public class AuthenticationTokenProcessingFilter extends GenericFilterBean
-{
+public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
 
-	//@Autowired
+	private static final String X_AUTH_TOKEN = "X-Auth-Token";
+
 	private final UserDetailsService userService;
 
-
-	public AuthenticationTokenProcessingFilter(UserDetailsService userService)
-	{
+	public AuthenticationTokenProcessingFilter(UserDetailsService userService) {
 		this.userService = userService;
 	}
 
-
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
-			ServletException
-	{
+	public void doFilter(ServletRequest request, ServletResponse response,
+			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = this.getAsHttpRequest(request);
 
 		String authToken = this.extractAuthTokenFromRequest(httpRequest);
@@ -41,23 +37,24 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean
 
 		if (userName != null) {
 
-			UserDetails userDetails = this.userService.loadUserByUsername(userName);
+			UserDetails userDetails = this.userService
+					.loadUserByUsername(userName);
 
 			if (TokenUtils.validateToken(authToken, userDetails)) {
 
-				UsernamePasswordAuthenticationToken authentication =
-						new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpRequest));
-				SecurityContextHolder.getContext().setAuthentication(authentication);
+				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+						userDetails, null, userDetails.getAuthorities());
+				authentication.setDetails(new WebAuthenticationDetailsSource()
+						.buildDetails(httpRequest));
+				SecurityContextHolder.getContext().setAuthentication(
+						authentication);
 			}
 		}
 
 		chain.doFilter(request, response);
 	}
 
-
-	private HttpServletRequest getAsHttpRequest(ServletRequest request)
-	{
+	private HttpServletRequest getAsHttpRequest(ServletRequest request) {
 		if (!(request instanceof HttpServletRequest)) {
 			throw new RuntimeException("Expecting an HTTP request");
 		}
@@ -65,11 +62,9 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean
 		return (HttpServletRequest) request;
 	}
 
-
-	private String extractAuthTokenFromRequest(HttpServletRequest httpRequest)
-	{
+	private String extractAuthTokenFromRequest(HttpServletRequest httpRequest) {
 		/* Get token from header */
-		String authToken = httpRequest.getHeader("X-Auth-Token");
+		String authToken = httpRequest.getHeader(X_AUTH_TOKEN);
 
 		/* If token not found get it from request parameter */
 		if (authToken == null) {
@@ -78,4 +73,4 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean
 
 		return authToken;
 	}
-}	
+}
