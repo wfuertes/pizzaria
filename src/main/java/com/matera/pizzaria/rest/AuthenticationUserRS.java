@@ -55,10 +55,7 @@ public class AuthenticationUserRS {
 	/**
 	 * Authenticates a user and creates an authentication token.
 	 * 
-	 * @param username
-	 *            The name of the user.
-	 * @param password
-	 *            The password of the user.
+         * @param userLogin
 	 * @return A transfer containing the authentication token.
 	 */
 	@ResponseBody
