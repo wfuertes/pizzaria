@@ -1,12 +1,12 @@
 package com.matera.pizzaria.test;
 
-import com.matera.pizzaria.dao.PizzaDAO;
-import com.matera.pizzaria.model.Pizza;
-import com.matera.pizzaria.service.PizzaService;
-
 import java.math.BigDecimal;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.matera.pizzaria.dao.PizzaDAO;
+import com.matera.pizzaria.model.Pizza;
+import com.matera.pizzaria.service.PizzaService;
 
 /**
  *

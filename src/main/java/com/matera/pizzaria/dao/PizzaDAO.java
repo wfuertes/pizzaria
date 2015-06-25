@@ -1,8 +1,8 @@
 package com.matera.pizzaria.dao;
 
-import com.matera.pizzaria.model.Pizza;
-
 import java.util.List;
+
+import com.matera.pizzaria.model.Pizza;
 
 /**
  *

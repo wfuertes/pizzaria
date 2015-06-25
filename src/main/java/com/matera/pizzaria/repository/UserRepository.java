@@ -1,8 +1,8 @@
 package com.matera.pizzaria.repository;
 
-import com.matera.pizzaria.model.User;
-
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.matera.pizzaria.model.User;
 
 /**
  *

@@ -1,7 +1,5 @@
 package com.matera.pizzaria.dao;
 
-import com.matera.pizzaria.model.Pizza;
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.matera.pizzaria.model.Pizza;
 
 /**
  *

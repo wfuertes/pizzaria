@@ -22,7 +22,7 @@
 	<!-- URLs livres do Spring Security -->
 	<sec:http pattern="/" security="none" />
 	<sec:http pattern="/resources/**" security="none" />
-	<sec:http pattern="/xyz/login" security="none" />
+	<sec:http pattern="/auth/login" security="none" />
 	
 	<sec:http
 			realm="Protected API"
@@ -33,10 +33,9 @@
 			authentication-manager-ref="authenticationManager">
 		<sec:csrf disabled="true" />
 		<sec:custom-filter ref="authenticationTokenProcessingFilter" position="FORM_LOGIN_FILTER" />
-		<sec:intercept-url method="POST" pattern="/xyz/login" access="permitAll" />
-		<sec:intercept-url method="GET" pattern="/xyz/login" access="isAuthenticated()" />
+		<sec:intercept-url method="POST" pattern="/auth/login" access="permitAll" />
  		<sec:intercept-url pattern="/**" access="isAuthenticated()" />
- 		<sec:logout logout-url="/xyz/logout" success-handler-ref="logoutSuccessHandler"/>
+ 		<sec:logout logout-url="/auth/logout" success-handler-ref="logoutSuccessHandler"/>
 <!-- 		<sec:intercept-url method="GET" pattern="/rest/news/**" access="hasRole('user')" /> -->
 <!-- 		<sec:intercept-url method="PUT" pattern="/rest/news/**" access="hasRole('admin')" /> -->
 <!-- 		<sec:intercept-url method="POST" pattern="/rest/news/**" access="hasRole('admin')" /> -->

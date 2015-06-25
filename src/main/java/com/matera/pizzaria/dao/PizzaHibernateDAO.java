@@ -1,13 +1,13 @@
 package com.matera.pizzaria.dao;
 
-import com.matera.pizzaria.model.Pizza;
-
 import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.matera.pizzaria.model.Pizza;
 
 /**
  *
