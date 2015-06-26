@@ -62,8 +62,6 @@ public class AuthenticationUserRS {
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE)
 	public TokenTransferDto authenticate(@RequestBody UserLoginDto userLogin) {
 
-		System.out.println(userLogin.getUsername());
-
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
 				userLogin.getUsername(), userLogin.getPassword());
 		Authentication authentication = this.authManager
@@ -77,7 +75,8 @@ public class AuthenticationUserRS {
 		UserDetails userDetails = this.userService.loadUserByUsername(userLogin
 				.getUsername());
 
-		return new TokenTransferDto(TokenUtils.createToken(userDetails));
+		TokenTransferDto tokenTransferDto = new TokenTransferDto(TokenUtils.createJwtToken(userDetails));
+		return tokenTransferDto;
 	}
 
 }

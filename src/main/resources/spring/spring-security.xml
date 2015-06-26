@@ -36,8 +36,9 @@
 	
 	<bean id="unauthorizedEntryPoint" class="com.matera.pizzaria.exception.UnauthorizedEntryPoint" />
 	
-	<bean class="com.matera.pizzaria.filter.AuthenticationTokenProcessingFilter" id="authenticationTokenProcessingFilter">
-		<constructor-arg ref="pizzariaUserDetailsService" />
+	<bean class="com.matera.pizzaria.filter.JWTFilter" id="authenticationTokenProcessingFilter">
+		<constructor-arg ref="authenticationManager" />
+		<constructor-arg ref="unauthorizedEntryPoint" />
 	</bean>
 	
 </beans>
