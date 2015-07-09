@@ -1,6 +1,6 @@
-package com.matera.pizzaria.repository;
+package com.matera.pizzaria.pg.repository;
 
-import com.matera.pizzaria.model.Pizza;
+import com.matera.pizzaria.pg.model.Pizza;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

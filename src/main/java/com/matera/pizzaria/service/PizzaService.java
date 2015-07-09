@@ -1,10 +1,13 @@
 package com.matera.pizzaria.service;
 
-import com.matera.pizzaria.model.Pizza;
-import com.matera.pizzaria.repository.PizzaRepository;
+import com.matera.pizzaria.ms.model.Ingredient;
+import com.matera.pizzaria.ms.repository.IngredientRepository;
+import com.matera.pizzaria.pg.model.Pizza;
+import com.matera.pizzaria.pg.repository.PizzaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -15,16 +18,20 @@ import org.springframework.stereotype.Service;
 public class PizzaService {
 
     private final PizzaRepository pizzaRepository;
+    private final IngredientRepository ingredientRepository;
 
     @Autowired
-    public PizzaService(final PizzaRepository pizzaRepository) {
+    public PizzaService(final PizzaRepository pizzaRepository, final IngredientRepository ingredientRepository) {
 
         this.pizzaRepository = pizzaRepository;
+        this.ingredientRepository = ingredientRepository;
     }
 
-    public String addNewPizza(Pizza pizza) {
+    @Transactional
+    public String addNewPizza(Pizza pizza, Ingredient ingredient) {
 
         pizzaRepository.save(pizza);
-        return "Pizza adicionada com sucesso!";
+        ingredientRepository.save(ingredient);
+        return "Pizza e ingrediente persistidos com sucesso!";
     }
 }

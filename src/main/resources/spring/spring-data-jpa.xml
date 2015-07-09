@@ -6,6 +6,10 @@
     http://www.springframework.org/schema/data/jpa  
     http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-	<repositories base-package="com.matera.pizzaria.repository" />
+	<repositories base-package="com.matera.pizzaria.pg.repository" />
+
+	<repositories base-package="com.matera.pizzaria.ms.repository"
+		entity-manager-factory-ref="mysqlEntityManagerFactory"
+		transaction-manager-ref="mysqlTransactionManager" />
 
 </beans:beans>  

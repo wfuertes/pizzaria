@@ -16,6 +16,12 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.1.6.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
@@ -82,9 +88,14 @@
 			<version>4.3.2.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>2.3.2</version>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1201-jdbc41</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.36</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
@@ -113,46 +124,6 @@
 					<path>/pizzaria</path>
 					<port>8080</port>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>fr.avianey.mojo</groupId>
-				<artifactId>hsqldb-maven-plugin</artifactId>
-				<version>1.0.0</version>
-				<!-- jdbc:hsqldb:hsql://localhost:9001/pizzaria override -->
-				<configuration>
-					<driver>org.hsqldb.jdbcDriver</driver>
-					<path>mem:pizzaria</path>
-					<address>localhost</address>
-					<port>9001</port>
-					<name>pizzaria</name>
-					<username>sa</username>
-					<password></password>
-					<detail>true</detail>
-					<validationQuery>SELECT 1 FROM INFORMATION_SCHEMA.SYSTEM_USERS</validationQuery>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sql-maven-plugin</artifactId>
-				<version>1.5</version>
-				<configuration>
-					<driver>org.hsqldb.jdbcDriver</driver>
-					<url>jdbc:hsqldb:hsql://localhost:9001/pizzaria</url>
-					<username>sa</username>
-					<password></password>
-					<settingsKey>sensibleKey</settingsKey>
-					<autocommit>true</autocommit>
-					<srcFiles>
-						<srcFile>${basedir}/src/main/resources/sql/create-table-user-roles.sql</srcFile>
-					</srcFiles>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.hsqldb</groupId>
-						<artifactId>hsqldb</artifactId>
-						<version>2.3.2</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

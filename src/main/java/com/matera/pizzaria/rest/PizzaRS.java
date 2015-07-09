@@ -6,8 +6,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
-import com.matera.pizzaria.model.Pizza;
-import com.matera.pizzaria.repository.PizzaRepository;
+import com.matera.pizzaria.pg.model.Pizza;
+import com.matera.pizzaria.pg.repository.PizzaRepository;
 
 import java.util.List;
 
